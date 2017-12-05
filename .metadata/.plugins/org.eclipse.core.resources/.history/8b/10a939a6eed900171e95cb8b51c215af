@@ -1,0 +1,38 @@
+package hhk.persistence;
+
+import java.util.Collection;
+import java.util.List;
+
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.CrudRepository;
+
+import hhk.domain.Board;
+
+public interface BoardRepository extends CrudRepository<Board, Long>{
+
+	public List<Board> findBoardByTitle(String title);
+
+	//특정 칼럼 처
+	public Collection<Board> findByWriter(String writer);
+	
+	//%검색어%
+	public Collection<Board> findByWriterContaining(String writer);
+
+	//Like
+	public Collection<Board> findByWriterLike(String writer);
+
+	//and or 조건 처리
+	public Collection<Board> findByTitleContainingOrContentContaining(String title, String content);
+	
+	//title LIKE % ? % AND BNO > ?
+	public Collection<Board> findByTitleContainingAndBnoGreaterThan(String keywoard, Long num);
+	
+	//bno > ? ORDER BY bno DESC
+	public Collection<Board> findByBnoGreaterThanOrderByBnoDesc(Long bno);
+	
+	//bno < ? ORDER BY bno DESC limit ?,?
+	public List<Board> findByBnoLessThanOrderByBnoDesc(Long bno, Pageable paging);
+
+	
+
+}
