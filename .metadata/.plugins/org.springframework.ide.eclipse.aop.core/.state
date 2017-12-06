@@ -3,4 +3,5 @@
 <aop-project name="boot1"/>
 <aop-project name="boot2"/>
 <aop-project name="boot3"/>
+<aop-project name="boot4"/>
 </aop-reference-model>

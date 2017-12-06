@@ -8,6 +8,11 @@ import hhk.domain.SampleVO;
 @RestController
 public class SampleController {
 	
+	@GetMapping("/")
+	public String Home() {
+		return "Home";
+	}
+	
 	@GetMapping("/hello")
 	public String sayHello() {
 		return "Hello World";
